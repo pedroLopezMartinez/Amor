@@ -165,5 +165,16 @@
       }, 200);
     });
   </script>
+
+<audio id="audioPlayer" src="Music/Morat - A Donde Vamos.mp3" loop></audio>
+
+<script>
+  document.body.addEventListener('click', function () {
+    document.getElementById('audioPlayer').play();
+  }, { once: true });
+</script>
+
+
+  
 </body>
 </html>
