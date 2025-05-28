@@ -116,7 +116,7 @@
   <div class="tree-container" id="tree-container"></div>
 
   <!-- Música de fondo -->
-  <audio src="Music/Morat - A Donde Vamos.mp3" id="bg-music" preload="auto"></audio>
+  <audio id="bg-music" src="Music/Morat - A Donde Vamos.mp3" preload="auto" loop></audio>
 
   <!-- Tu script general -->
   <script src="Js/script.js"></script>
@@ -166,15 +166,19 @@
     });
   </script>
 
-<audio id="audioPlayer" src="Music/Morat - A Donde Vamos.mp3" loop></audio>
+  <!-- Script para reproducir música con un solo clic -->
+  <script>
+    const playBtn = document.getElementById('playButton');
+    const music = document.getElementById('bg-music');
 
-<script>
-  document.body.addEventListener('click', function () {
-    document.getElementById('audioPlayer').play();
-  }, { once: true });
-</script>
-
-
-  
+    if (playBtn && music) {
+      playBtn.addEventListener('click', () => {
+        music.play();
+        playBtn.disabled = true;
+        playBtn.innerText = "🎵 Música en reproducción";
+      }, { once: true });
+    }
+  </script>
 </body>
 </html>
+
