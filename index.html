@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Árbol de Amor Animado</title>
+
+  <!-- Metadatos -->
+  <meta name="author" content="Zero">
+  <meta name="copyright" content="Zero - Código libre no comercial">
+  <meta name="description" content="Árbol de Amor Animado: una sorpresa interactiva y romántica para dedicar a tu pareja o ser querido.">
+  <meta name="keywords" content="amor, sorpresa, romántico, dedicatoria, animación, árbol, corazones, pareja, aniversario, regalo digital">
+  <meta name="robots" content="index, follow">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="Css/style.css">
+  <link rel="stylesheet" href="Css/style.mobile.css" media="only screen and (max-width: 600px)">
+  
+  <style>
+    .tree-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      z-index: 2;
+    }
+
+    .animated-heart {
+      transform-origin: center;
+      animation: beat 1s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      20% { transform: scale(1.1); }
+      40% { transform: scale(0.95); }
+      60% { transform: scale(1.08); }
+      80% { transform: scale(1); }
+    }
+
+    /* Overlay para imagen ampliada */
+    #image-overlay {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    #image-overlay img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border: 5px solid white;
+      border-radius: 18px;
+      box-shadow: 0 0 40px rgba(255, 0, 150, 0.9);
+      transform: scale(1.6);
+      transition: transform 0.4s ease;
+    }
+
+    .floating-heart {
+      margin-top: -30px;
+      font-size: 48px;
+      opacity: 0;
+      animation: floatHeart 1.2s ease forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-80px) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="floating-objects"></div>
+
+  <div class="dedication-text" id="dedication-text">
+    <div class="signature" id="signature"></div>
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <!-- Collage de imágenes -->
+  <div class="collage-container">
+    <img src="Img/foto1.jpg" alt="Foto 1" class="collage-img">
+    <img src="Img/foto2.jpg" alt="Foto 2" class="collage-img">
+    <img src="Img/foto3.jpg" alt="Foto 3" class="collage-img">
+  </div>
+
+  <!-- Contenedor de imagen ampliada y corazón -->
+  <div id="image-overlay" style="display: none;">
+    <img id="enlarged-img" src="" alt="" />
+    <div class="floating-heart">❤️</div>
+  </div>
+
+  <!-- Árbol SVG o animación -->
+  <div class="tree-container" id="tree-container"></div>
+
+  <!-- Música de fondo -->
+  <audio src="Music/Morat - A Donde Vamos.mp3" id="bg-music" preload="auto"></audio>
+
+  <!-- Tu script general -->
+  <script src="Js/script.js"></script>
+
+  <!-- Script para hover ampliado sin parpadeo -->
+  <script>
+    const collageImages = document.querySelectorAll('.collage-img');
+    const overlay = document.getElementById('image-overlay');
+    const enlargedImg = document.getElementById('enlarged-img');
+    const heart = overlay.querySelector('.floating-heart');
+
+    let isHovering = false;
+    let hideTimeout = null;
+
+    collageImages.forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        const src = img.getAttribute('src');
+        enlargedImg.setAttribute('src', src);
+        overlay.style.display = 'flex';
+
+        isHovering = true;
+        clearTimeout(hideTimeout);
+
+        heart.style.animation = 'none';
+        heart.offsetHeight;
+        heart.style.animation = 'floatHeart 1.2s ease forwards';
+      });
+
+      img.addEventListener('mouseleave', () => {
+        isHovering = false;
+        hideTimeout = setTimeout(() => {
+          if (!isHovering) overlay.style.display = 'none';
+        }, 200);
+      });
+    });
+
+    overlay.addEventListener('mouseenter', () => {
+      isHovering = true;
+      clearTimeout(hideTimeout);
+    });
+
+    overlay.addEventListener('mouseleave', () => {
+      isHovering = false;
+      hideTimeout = setTimeout(() => {
+        if (!isHovering) overlay.style.display = 'none';
+      }, 200);
+    });
+  </script>
+</body>
+</html>
