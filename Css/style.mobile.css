@@ -86,12 +86,13 @@ body, html {
   margin-top: 8vw;
   z-index: 1;
   width: 100%;
-  text-align: center;
+  text-align: center; /* <--- asegúrate de tener esta línea */
 }
 
 
+
 .collage-img {
-  display: block;
+  display: inline-block; /* <--- esto es nuevo */
   margin: 0 auto;
   max-width: 90%;
   height: auto;
