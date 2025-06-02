@@ -81,10 +81,14 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* <-- esto es nuevo */
   gap: 3vw;
   margin-top: 8vw;
   z-index: 1;
+  width: 100%;
+  text-align: center;
 }
+
 
 .collage-img {
   width: 75vw;
