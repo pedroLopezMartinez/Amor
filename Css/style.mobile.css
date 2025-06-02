@@ -61,8 +61,10 @@ body, html {
 }
 
 .countdown {
-  position: relative;
-  margin-top: 4vw;
+  position: fixed;
+  bottom: 2vw;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.95rem;
   min-width: 70vw;
   max-width: 92vw;
@@ -71,10 +73,11 @@ body, html {
   border-radius: 1em;
   background: #fff8;
   box-shadow: 0 2px 8px #e6002611;
-  z-index: 4;
+  z-index: 10; /* Lo subimos para que esté por encima del contenido */
   letter-spacing: 0.05em;
   opacity: 1;
 }
+
 
 /* Collage responsive */
 .collage-container {
