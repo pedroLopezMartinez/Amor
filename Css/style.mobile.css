@@ -1,16 +1,20 @@
-/*© Zero - Código libre no comercial*/
+/* © Zero - Código libre no comercial */
+/* Estilos específicos para pantallas de hasta 600px */
 
 body {
-  font-size: 16px;
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .tree-container {
-  width: 92vw !important;
-  height: 62vw !important;
-  max-width: 98vw;
-  max-height: 80vw;
-  min-width: 180px;
-  min-height: 180px;
+  width: 95vw !important;
+  height: 70vw !important;
+  max-width: 100vw;
+  max-height: 90vw;
+  min-width: 160px;
+  min-height: 160px;
   position: absolute;
   top: 48%;
   left: 50%;
@@ -18,93 +22,75 @@ body {
   z-index: 2;
 }
 
-.tree-container svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 .tree-container svg.move-and-scale {
-  transition: transform 1.2s cubic-bezier(.77,0,.18,1);
-  /* Mueve hacia abajo en caso de los celualares */
-  transform: translateY(60px) scale(1.18);
+  transform: translateY(40px) scale(1.15);
 }
 
 .dedication-text {
   position: absolute;
-  top: 7vw;
+  top: 4vw;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 92vw;
-  font-size: 1.05rem;
+  max-width: 90vw;
+  font-size: 0.95rem;
   text-align: center;
-  color: #000000;
+  color: #000;
   font-family: 'Courier New', Courier, monospace;
   white-space: pre-line;
-  z-index: 3;
-  opacity: 0;
-  pointer-events: none;
+  z-index: 10;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .signature {
   position: static;
   display: block;
-  margin: 2.2em auto 0 auto;
-  left: auto;
-  bottom: auto;
-  transform: none;
-  font-size: 1.25rem;
+  margin: 2em auto 0 auto;
+  font-size: 1.1rem;
   color: #e60026;
-  opacity: 0;
-  z-index: 5;
-  white-space: pre;
-  pointer-events: none;
-  transition: opacity 0.7s;
   text-align: center;
-}
-
-@media (max-width: 700px) {
-  .signature {
-    position: static;
-    display: block;
-    margin: 2.2em auto 0 auto;
-    left: auto;
-    bottom: auto;
-    transform: none;
-    font-size: 1.25rem;
-    text-align: center;
-  }
+  white-space: pre;
+  opacity: 1;
+  pointer-events: none;
 }
 
 .countdown {
   position: fixed;
   left: 50%;
-  bottom: 10vw;
+  bottom: 12vw;
   transform: translateX(-50%);
-  font-size: 0.98rem;
-  min-width: 60vw;
-  max-width: 92vw;
+  font-size: 0.95rem;
+  width: 90vw;
   text-align: center;
-  padding: 0.5em 0.7em;
+  padding: 0.6em 1em;
   border-radius: 1em;
-  background: #fff8;
-  box-shadow: 0 2px 8px #e6002611;
+  background: #fff9;
+  box-shadow: 0 2px 6px #e6002622;
   z-index: 6;
-  pointer-events: none;
-  letter-spacing: 0.05em;
-  transition: opacity 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
-  opacity: 0;
-  transform: translateX(-50%) translateY(30px);
-}
-
-.countdown.visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  pointer-events: none;
 }
 
-/* Ajusta los pétalos flotantes */
 .floating-petal {
-  width: 13px;
-  height: 18px;
+  width: 12px;
+  height: 17px;
 }
 
+/* Collage en vertical */
+.collage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 5vh;
+  position: relative;
+  z-index: 1;
+}
+
+.collage-img {
+  width: 80vw;
+  max-width: 300px;
+  height: auto;
+  border-radius: 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
